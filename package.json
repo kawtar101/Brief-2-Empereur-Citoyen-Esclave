@@ -1,0 +1,24 @@
+{
+  "name": "sp2-brief2-game_ece",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./styleCSS/input.css -o ./styleCSS/output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/med00-co/sp2-brief2-game_ECE.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/med00-co/sp2-brief2-game_ECE/issues"
+  },
+  "homepage": "https://github.com/med00-co/sp2-brief2-game_ECE#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
