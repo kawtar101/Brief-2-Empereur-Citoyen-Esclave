@@ -1,10 +1,10 @@
 //creating ,editing and deleting player profiles
 //Everything related to players.
 
-function createplayer(nichname,avatar){
+export function createPlayer(nickname,avatar){
     const player ={
-        id : "player_" + Date.now(),
-        nichname:nichname,
+        id : "p_" + Date.now(),
+        nickname:nickname,
         avatar:avatar,
         createdAt: new Date().toISOString().split("T")[0]
     };
