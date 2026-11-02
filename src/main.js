@@ -8,11 +8,24 @@ import { displayPlayers } from "./ui.js";
 const formplayer = document.getElementById("player-form");
 const nicknameInput = document.getElementById("nickname");
 const avatarselection = document.getElementById("avatar");
+const avatarOptions = document.querySelectorAll(".avatar-option");
+avatarOptions.forEach(function(image) {
+   image.addEventListener("click", function() {
+     avatarselection.value = image.dataset.avatar;
+      avatarOptions.forEach(function(option) {
+    option.classList.remove("border-empereur");
+ option.classList.add("border-transparent");
+               });
+               image.classList.remove("border-transparent");
+                 image.classList.add("border-empereur");
+            });
+        });
 const playersList = document.getElementById("players-list");
 const activePlayerDisplay = document.getElementById("active-player");
 const startGameButton = document.getElementById("start-game");
 const gameMessage = document.getElementById("game-message");
-const nicknameRegex = /^[a-zA-Z0-9*]{3,15}$/;
+const nicknameRegex = /^[A-Za-z0-9* ]{3,15}$/;
+
 let players = loadPlayers();
 let editplayerId = null;// this will remeber th ID of the player we are editing
 let activePlayer = null;
@@ -89,10 +102,21 @@ return player.id ===playerId;
   if (!playerToEdit) {
         return;
 }
+
 editplayerId = playerToEdit.id;
 nicknameInput.value=playerToEdit.nickname;
 avatarselection.value=playerToEdit.avatar;
-  });
+avatarOptions.forEach(function(image) {
+    if (image.dataset.avatar === playerToEdit.avatar){
+        image.classList.remove("border-transparent");
+        image.classList.add("border-empereur");
+    }
+    else{
+  image.classList.remove("border-empereur");
+  image.classList.add("border-transparent");
+    }
+ });
+
     startGameButton.addEventListener("click", function() {
                 if (activePlayer === null) {
   gameMessage.textContent = "Please select a player first!";

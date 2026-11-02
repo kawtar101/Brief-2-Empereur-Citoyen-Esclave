@@ -37,12 +37,14 @@
            choose an Avatar:
           </label>
             <!-- and in here i will choose the avatar for selection -->
-        <select id = "avatar" name="avatar" required
-                    class="w-full p-3 rounded-md bg-fond border border-white/20 text-white focus:outline-none focus:border-empereur">
-      <option value="assets/images/avatars/dragon.jpg">dragon</option>
-        <option value="assets/images/avatars/knight.jpg">knight</option>   
-     <option value="assets/images/avatars/wizard.jpg">wizard</option>
-        </select>
+       
+        <div class ="flex gap-4 justify-center">
+    
+        <img  src="assets/images/avatars/dragon.jpg" alt="dragon" class="avatar-option w-24 h-24 object-cover rounded-full border-2 border-transparent cursor-pointer">
+         <img  src="assets/images/avatars/knight.jpg" alt="knight" class="avatar-option w-24 h-24 object-cover rounded-full border-2 border-transparent cursor-pointer">
+          <img  src="assets/images/avatars/wizard.jpg" alt="wizard" class="avatar-option w-24 h-24 object-cover rounded-full border-2 border-transparent cursor-pointer">
+          </div>
+          <input type = "hidden" id ="avatar" name ="avatar" value ="assets/images/avatars/dragon.jpg">
         <section class="text-center mt-8">
 <button id ="start-game" class="bg-empereur text-fond font-semibold py-3 rounded-md hover:opacity-90 transition">start game</button>
    <p id="game-message" class="mt-3 text-sm text-red-400"></p>       
