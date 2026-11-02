@@ -9,6 +9,9 @@ const formplayer = document.getElementById("player-form");
 const nicknameInput = document.getElementById("nickname");
 const avatarselection = document.getElementById("avatar");
 const playersList = document.getElementById("players-list");
+const activePlayerDisplay = document.getElementById("active-player");
+const startGameButton = document.getElementById("start-game");
+const gameMessage = document.getElementById("game-message");
 const nicknameRegex = /^[a-zA-Z0-9*]{3,15}$/;
 let players = loadPlayers();
 let editplayerId = null;// this will remeber th ID of the player we are editing
@@ -70,6 +73,8 @@ return player.id !== playerId;
         if (!activePlayer){
             return;
         }
+          activePlayerDisplay.textContent = "Selected player: " + activePlayer.nickname;
+
         console.log("Active player:",activePlayer);
         return;
     }
@@ -87,6 +92,12 @@ return player.id ===playerId;
 editplayerId = playerToEdit.id;
 nicknameInput.value=playerToEdit.nickname;
 avatarselection.value=playerToEdit.avatar;
-
-});
-displayPlayers(players,playerList);
+  });
+    startGameButton.addEventListener("click", function() {
+                if (activePlayer === null) {
+  gameMessage.textContent = "Please select a player first!";
+  return;
+                }
+                 gameMessage.textContent = "Welcome " + activePlayer.nickname + "! Let's play!";
+    });
+displayPlayers(players,playersList);

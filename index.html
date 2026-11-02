@@ -1,42 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Empereur,citoyen,esclave</title>
     <link rel="stylesheet" href="./styleCSS/output.css"/>
 
     </head>
-  <body>
+  <body class="min-h-screen bg-fond text-texte px-4 py-10">
     
-    <header>
-      <h1>Empereur, citoyen, esclave</h1>
+    <header  class="text-center mb-10">
+      <h1 class="text-3xl font-bold text-empereur" >
+        Empereur, citoyen, esclave</h1>
+    <p class="mt-3 text-texte/70">
+      create your player profile and get ready to play
+    </p>
+    <p id="active-player" class="mt-4 text-empereur font-semibold"></p>
     </header>
-    <main>
+    <main class="max-w-md mx-auto">
       <!-- this section tag will group everything related to player profiles -->
-      <section id="players-section"> 
+      <section id="players-section"    class="bg-carte p-6 rounded-lg border border-white/10"> 
 
-          <h2>players profile</h2>
+          <h2 class="text-xl font-semibold text-center mb-6">players profile</h2>
           <!-- the form will contain the inputs needed to create the  profiles -->
-          <form id="player-form">
-            <!-- for entering the nickname -->
-            <label for = "nickname">Nickname:</label>
-            <input type="text" id="nickname" name="nickname" placeholder="Enter your nickname" required />
-            <label for="avatar">choose an Avatar:</label>
+         <form id="player-form"  class="flex flex-col gap-4">
+        <!-- for entering the nickname -->
+         <div>
+        <label for = "nickname" class="block mb-2 text-sm">Nickname:</label>
+       <input type="text" id="nickname" name="nickname" placeholder="Enter your nickname" required
+        class="w-full p-3 rounded-md bg-fond border border-white/20 text-white focus:outline-none focus:border-empereur"
+          />   
+          </div>    
+          <div>
+          <label for="avatar"
+           class="block mb-2 text-sm">
+           choose an Avatar:
+          </label>
             <!-- and in here i will choose the avatar for selection -->
-            <select id = "avatar" name="avatar" required>
-              <option value="assets/images/avatars/dragon.jpg">dragon</option>
-              <option value="assets/images/avatars/knight.jpg">knight</option>   
-              <option value="assets/images/avatars/wizard.jpg">wizard</option>
-            </select>
+        <select id = "avatar" name="avatar" required
+                    class="w-full p-3 rounded-md bg-fond border border-white/20 text-white focus:outline-none focus:border-empereur">
+      <option value="assets/images/avatars/dragon.jpg">dragon</option>
+        <option value="assets/images/avatars/knight.jpg">knight</option>   
+     <option value="assets/images/avatars/wizard.jpg">wizard</option>
+        </select>
+        <section class="text-center mt-8">
+<button id ="start-game" class="bg-empereur text-fond font-semibold py-3 rounded-md hover:opacity-90 transition">start game</button>
+   <p id="game-message" class="mt-3 text-sm text-red-400"></p>       
+</section>
+        </div class = "flex gap-2 mt-4">
+
             <!-- for form submission -->
-             <p id="error-message" ></p>
-            <button type="submit">create profile</button>
-            </form>
-            <div id = "players-list">
+         <p id="error-message" class="text-red-400 text-sm"></p>
+      <button type="submit" class="w-full bg-empereur text-fond font-semibold py-3 rounded-md hover:opacity-90 transition">create profile</button>
+        </form>
+       <div id = "players-list" class="mt-6">
                       <!-- the profiless  (dsplaying them ) -->
               </div>
-      </section>
+    </section>
       </main>
 <script type="module" src="src/main.js"></script>
    </body>
