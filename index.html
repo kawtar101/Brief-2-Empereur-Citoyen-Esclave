@@ -15,7 +15,7 @@
     <p class="mt-4 text-texte/60 text-sm md:text-base">
       create your player profile and get ready to play
     </p>
-    <p id="active-player" class="mt-4 text-empereur font-semibold"></p>
+   
      <div class="w-20 h-px bg-empereur/50 mx-auto mt-7"></div>
     </header>
     <main  class="max-w-5xl mx-auto px-4 pb-16">
@@ -42,21 +42,25 @@
             <!-- and in here i will choose the avatar for selection -->
        
         <div class ="flex justify-center items-center gap-7 md:gap-10">
-      <div class="flex flex-col items-center gap-2">
-        <img  src="assets/images/avatars/dragon.jpg" alt="dragon" class="avatar-option w-24 h-24 object-cover rounded-full border-2 border-transparent cursor-pointer">
-         <span class="text-xs text-texte/60">Dragon</span>
-        </div>
-         <div class="flex flex-col items-center gap-2">
-         <img  src="assets/images/avatars/knight.jpg" alt="knight" class="avatar-option w-24 h-24 object-cover rounded-full border-2 border-transparent cursor-pointer">
-          <span class="text-xs text-texte/60">Knight</span>
-         </div>
-          <div class="flex flex-col items-center gap-2">
-          <img  src="assets/images/avatars/wizard.jpg" alt="wizard" class="avatar-option w-24 h-24 object-cover rounded-full border-2 border-transparent cursor-pointer">
+       <label class="flex flex-col items-center gap-2 cursor-pointer">
+<input type="radio" name="avatar" value="assets/images/avatars/dragon.jpg" class="peer sr-only" required>       
+  <img  src="assets/images/avatars/dragon.jpg"  alt="dragon" class="w-24 h-24 object-cover rounded-full ring-1 ring-white/20 peer-checked:ring-2 peer-checked:ring-empereur peer-checked:scale-110 peer-focus-visible:ring-2 hover:scale-110 transition">
+ <span class="text-xs text-texte/60">Dragon</span>
+  </label>
+        <label class="flex flex-col items-center gap-2 cursor-pointer">
+        <input type="radio" name="avatar" value="assets/images/avatars/knight.jpg" class="peer sr-only" required>      
+        <img  src="assets/images/avatars/knight.jpg"  alt="knight" class="w-24 h-24 object-cover rounded-full ring-1 ring-white/20 peer-checked:ring-2 peer-checked:ring-empereur peer-checked:scale-110 peer-focus-visible:ring-2 hover:scale-110 transition">
+         <span class="text-xs text-texte/60">Knight</span>
+        </label>
+         
+        <label class="flex flex-col items-center gap-2 cursor-pointer">
+                 <input type="radio" name="avatar" value="assets/images/avatars/wizard.jpg" class="peer sr-only" required>      
+
+          <img  src="assets/images/avatars/wizard.jpg"  alt="wizard"  class="w-24 h-24 object-cover rounded-full ring-1 ring-white/20 peer-checked:ring-2 peer-checked:ring-empereur peer-checked:scale-110 peer-focus-visible:ring-2 hover:scale-110 transition">
            <span class="text-xs text-texte/60">Wizard</span>
+        </label>
           </div>
-          </div>
-          <input type = "hidden" id ="avatar" name ="avatar" value ="">
-     </div>
+        </div>  
      
 
             <!-- for form submission -->
@@ -82,7 +86,7 @@ manage your registred profiles </p>
      <section class="max-w-xl mx-auto mt-16 bg-carte border border-white/10 rounded-2xl p-7 text-center">
       <p class="text-xs uppercase tracking-[0.2em] text-empereur mb-3">ready for the challenge?</p>
       <p id="active-player" class="text-texte/60 mb-5">no selected players</p>
-      <button id ="button" id ="start-game"  class="bg-empereur text-fond font-bold px-10 py-3 rounded-lg hover:opacity-80 transition">start game </button>
+      <button  id ="start-game"  class="bg-empereur text-fond font-bold px-10 py-3 rounded-lg hover:opacity-80 transition">start game </button>
        <p id="game-message" class="mt-4 text-sm text-red-400"></p>
     </section>
       </main>
