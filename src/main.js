@@ -21,9 +21,17 @@ let activePlayer = null;
 formplayer.addEventListener("submit", function(event) {
     event.preventDefault(); // we do this so that i can prevent it from refreshing the page
 const nickname = nicknameInput.value.trim();
-cons selectedAvatar = formplayer.query
+const selectedAvatar = formplayer.querySelector(
+'input[name="avatar"]:checked'
+);
+if(!selectedAvatar){
+    errorMessage.textContent = "plz select an avatar";
+    return;
+}
+const avatar = selectedAvatar.value;
     if(!nicknameRegex.test(nickname)){
-    console.log("Invalid nickname. Please enter a valid nickname.");
+       errorMessage.textContent = "Please enter a valid nickname (3–15 characters).";
+
     return;
     } 
     //.some checks the player until it finds a matching ickname when it finds one it returns true
@@ -31,7 +39,7 @@ cons selectedAvatar = formplayer.query
         return player.nickname.toLowerCase() === nickname.toLowerCase()&& player.id !== editplayerId;;
      });
     if(duplicate){
-        console.log("Nickname already exists. Please choose a different nickname.");
+    errorMessage.textContent = "Nickname already exists!";
         return;
     }
    if (editplayerId !== null){
@@ -39,7 +47,7 @@ cons selectedAvatar = formplayer.query
 return player.id === editplayerId;
     });
     playerToEdit.nickname = nickname;
-     playerToEdit.avatar = avatar;
+     playerToEdit.avatar = selectedAvatar.value;
  editplayerId = null;
    }
    else{
@@ -49,6 +57,7 @@ return player.id === editplayerId;
    savePlayers(players);
    displayPlayers(players, playersList);
    formplayer.reset();
+   errorMessage.textContent = "";
     console.log(players);
 });
 playersList.addEventListener("click",function(event){
@@ -94,16 +103,12 @@ return player.id ===playerId;
 
 editplayerId = playerToEdit.id;
 nicknameInput.value=playerToEdit.nickname;
-avatarselection.value=playerToEdit.avatar;
-avatarOptions.forEach(function(image) {
-    if (image.dataset.avatar === playerToEdit.avatar){
-        image.classList.remove("border-transparent");
-        image.classList.add("border-empereur");
-    }
-    else{
-  image.classList.remove("border-empereur");
-  image.classList.add("border-transparent");
-    }
+const avatarRadio = formplayer.querySelector(
+    'input[name="avatar"][value="' + playerToEdit.avatar + '"]'
+);
+if(avatarRadio){
+    avatarRadio.checked = true;
+}
  });
 
     startGameButton.addEventListener("click", function() {
@@ -112,5 +117,6 @@ avatarOptions.forEach(function(image) {
   return;
                 }
                  gameMessage.textContent = "Welcome " + activePlayer.nickname + "! Let's play!";
-    });
+   }); 
+    
 displayPlayers(players,playersList);

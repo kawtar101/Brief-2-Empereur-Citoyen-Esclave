@@ -18,14 +18,15 @@
    
      <div class="w-20 h-px bg-empereur/50 mx-auto mt-7"></div>
     </header>
-    <main  class="max-w-5xl mx-auto px-4 pb-16">
+    <main  class="max-w-7xl mx-auto px-4 pb-16">
+       <div class="flex flex-col lg:flex-row items-start gap-8">
       <!-- this section tag will group everything related to player profiles -->
-      <section id="players-section" class="max-w-xl mx-auto bg-carte p-6 md:p-9 rounded-2xl border border-white/10 shadow-xl">
-         <div class="text-center mb-8">
-        <h2 class="text-xl font-semibold text-center mb-6">create your profile</h2>
+<section class="w-full bg-carte border border-white/10 rounded-2xl p-7 text-center">     
+      <div class="text-center mb-8">
+  <h2 class="text-xl font-semibold text-center mb-6">create your profile</h2>
            
         <p class="text-texte/50 text-sm mt-2">Choose your nickname and your avatar.</p>
-      </div>
+</div>
         <!-- the form will contain the inputs needed to create the  profiles -->
          <form id="player-form"  class="flex flex-col gap-6">
         <!-- for entering the nickname -->
@@ -70,8 +71,9 @@
                 create profile 
                 </button>
                 </form>
-                </section>
-                <section class="mt-16">
+       </section>
+       <div class="w-full lg:w-2/3 min-w-0 flex flex-col gap-8">
+                <section>
                   <div class="flex items-center justify-between mb-7">
                     <div>
                        <h2 class="font-title text-2xl font-semibold text-empereur">your players</h2>
@@ -79,9 +81,8 @@
 manage your registred profiles </p>
                       </div>
                       </div>
-       <div id = "players-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                      <!-- the profiless  (dsplaying them ) -->
-              </div>
+                      <!--displaying the profiles-->
+       <div id = "players-list"class="grid grid-cols-1 sm:grid-cols-2 gap-5"></div>
     </section>
      <section class="max-w-xl mx-auto mt-16 bg-carte border border-white/10 rounded-2xl p-7 text-center">
       <p class="text-xs uppercase tracking-[0.2em] text-empereur mb-3">ready for the challenge?</p>
@@ -89,6 +90,8 @@ manage your registred profiles </p>
       <button  id ="start-game"  class="bg-empereur text-fond font-bold px-10 py-3 rounded-lg hover:opacity-80 transition">start game </button>
        <p id="game-message" class="mt-4 text-sm text-red-400"></p>
     </section>
+  </div>
+</div>
       </main>
        <footer class="text-center py-6 border-t border-white/10">
         <p class="text-sm text-texte/50">&copy; 2023 Empire Game. All rights reserved.</p>
