@@ -1,9 +1,9 @@
 @import "tailwindcss";
-body {
-  background-image : url("../assets/images/background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-   background-attachment: fixed;
-  
+@theme {
+  --color-fond: #14110f;
+  --color-texte: #ece6da;
+  --color-carte: #201b17;
+  --color-empereur: #d4af37;
+   --font-title: "Cinzel", serif;
+  --font-sans: "DM Sans", sans-serif;
 }
