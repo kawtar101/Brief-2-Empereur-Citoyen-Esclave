@@ -382,10 +382,6 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
-  .tracking-\[0\.2em\] {
-    --tw-tracking: 0.2em;
-    letter-spacing: 0.2em;
-  }
   .text-red-400 {
     color: var(--color-red-400);
   }
@@ -420,11 +416,6 @@
     --tw-outline-style: none;
     outline-style: none;
   }
-  @media (width >= 48rem) {
-    .md\:p-9 {
-      padding: calc(var(--spacing) * 9);
-    }
-  }
 }
 body {
   background-image: url("../assets/images/background.jpg");
@@ -439,10 +430,6 @@ body {
   initial-value: solid;
 }
 @property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-tracking {
   syntax: "*";
   inherits: false;
 }
@@ -521,7 +508,6 @@ body {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
