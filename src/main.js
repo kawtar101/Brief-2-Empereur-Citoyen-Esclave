@@ -116,6 +116,7 @@ avatarOptions.forEach(function(image) {
   image.classList.add("border-transparent");
     }
  });
+});
 
     startGameButton.addEventListener("click", function() {
                 if (activePlayer === null) {
