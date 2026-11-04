@@ -4,10 +4,11 @@
 // 1st we have to connect the form to js
 import {loadPlayers,savePlayers} from "./storage.js";
 import {createPlayer} from "./players.js"
-import { displayPlayers } from "./ui.js";
+import { displayPlayers,displaycards,displayComputercards } from "./ui.js";
+import { createHand } from "./game.js";
 const formplayer = document.getElementById("player-form");
 const nicknameInput = document.getElementById("nickname");
-
+const computerhand = createHand("slave");
 const playersList = document.getElementById("players-list");
 const activePlayerDisplay = document.getElementById("active-player");
 const startGameButton = document.getElementById("start-game");
@@ -110,7 +111,6 @@ if(avatarRadio){
     avatarRadio.checked = true;
 }
  });
-});
 
     startGameButton.addEventListener("click", function() {
                 if (activePlayer === null) {
@@ -121,3 +121,5 @@ if(avatarRadio){
    }); 
     
 displayPlayers(players,playersList);
+displaycards(createHand("emperor"));
+displayComputerCards(computerhand.length);
