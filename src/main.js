@@ -9,13 +9,16 @@ import { createHand } from "./game.js";
 const formplayer = document.getElementById("player-form");
 const nicknameInput = document.getElementById("nickname");
 const computerhand = createHand("slave");
+const playerHand = createHand("emperor");
 const playersList = document.getElementById("players-list");
 const activePlayerDisplay = document.getElementById("active-player");
 const startGameButton = document.getElementById("start-game");
 const gameMessage = document.getElementById("game-message");
 const errorMessage = document.getElementById("error-message");
 const nicknameRegex = /^[A-Za-z0-9 ]{3,15}$/;
-
+const gameSection = document.getElementById("game-section");
+ const duelMessage = document.getElementById("duel-message");
+const profilesScreen = document.getElementById("profiles-screen");
 let players = loadPlayers();
 let editplayerId = null;// this will remeber th ID of the player we are editing
 let activePlayer = null;
@@ -113,12 +116,14 @@ if(avatarRadio){
  });
 
     startGameButton.addEventListener("click", function() {
-                if (activePlayer === null) {
-  gameMessage.textContent = "Please select a player first!";
-  return;
-                }
-                 gameMessage.textContent = "Welcome " + activePlayer.nickname + "! Let's play!";
-   });   
+  if (activePlayer === null){
+    gameMessage.textContent = "you have to select a player first";
+    return;
+  }
+  profilesScreen.style.display = "none";
+   gameSection.style.display = "block";
+     
+    });   
    const playerHand = createHand("emperor");
    const playerHandContainer = document.getElementById("player-hand");
 const playerhandcontainer = document.getElementById("player-hand")
@@ -135,6 +140,5 @@ playerhandcontainer.addEventListener("click",function(event){
 
 
 displayPlayers(players,playersList);
-displaycards(createHand("emperor"));
+displaycards(playerHand);
 displayComputercards(computerhand.length);
-displayhand(playerHand);

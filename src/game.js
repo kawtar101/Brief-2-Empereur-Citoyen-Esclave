@@ -11,3 +11,16 @@ export function createHand(camp) {
     }
     
 }
+export function duel (playerCard, computerCard) {
+ if (playerCard === computerCard) {
+    return "draw";
+}
+if(
+     (playerCard === "emperor" && computerCard === "slave") ||
+    (playerCard === "slave" && computerCard === "citizen") ||
+ (playerCard === "citizen" && computerCard === "emperor")
+){
+    return "victory";
+}
+return "defeat";
+}
