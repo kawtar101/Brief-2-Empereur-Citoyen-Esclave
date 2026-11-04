@@ -34,8 +34,9 @@ const cards=document.getElementById("player-hand");
 cards.innerHTML = hand
 // card the current word and index is the current position 
 .map(function(card,index){
-          return `<button data-index="${index}" class="w-12 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28 flex items-center justify-center rounded-lg border border-white/20 bg-fond text-texte text-[10px] sm:text-xs md:text-sm capitalize cursor-pointer hover:border-empereur hover:-translate-y-1 focus:outline-none focus-visible:border-empereur disabled:opacity-40 disabled:cursor-not-allowed transition">
-          ${card}</button>`;
+          return `<button data-index="${index}" class="w-12 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28  rounded-lg overflow-hidden shrink-0 border border-white/20 cursor-pointer hover:border-empereur hover:-translate-y-1 focus:outline-none focus-visible:border-empereur disabled:opacity-40 disabled:cursor-not-allowed transition">
+          <img src="assets/cards/${card}.webp" alt="${card}" class="w-full h-full object-cover">
+          </button>`
 })
 .join("");// bcz we have pieces of text (seperate ) ,it glue them into one long string with nothing between thrm and that string is what goes in innerhtml
 }
@@ -45,7 +46,9 @@ export function displayComputercards(count){
     .fill("") 
     .map(function(){
         //im gonna use div bcz the computer's cards aren't clickable
-        return `<div class="w-12 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28 flex items-center justify-center rounded-lg border border-white/20 bg-fond text-texte text-[10px] sm:text-xs md:text-sm capitalize cursor-pointer hover:border-empereur hover:-translate-y-1 focus:outline-none focus-visible:border-empereur disabled:opacity-40 disabled:cursor-not-allowed transition"> ? </div>`;
-    })
+        return  `<div class="w-12 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28 rounded-lg overflow-hidden shrink-0 border border-empereur/40">
+          <img src="assets/cards/bakcard.jpg" alt="Hidden card" class="w-full h-full object-cover">
+          </div>`
+          })
     .join("");
 }

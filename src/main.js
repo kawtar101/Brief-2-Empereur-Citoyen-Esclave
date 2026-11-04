@@ -118,8 +118,23 @@ if(avatarRadio){
   return;
                 }
                  gameMessage.textContent = "Welcome " + activePlayer.nickname + "! Let's play!";
-   }); 
-    
+   });   
+   const playerHand = createHand("emperor");
+   const playerHandContainer = document.getElementById("player-hand");
+const playerhandcontainer = document.getElementById("player-hand")
+playerhandcontainer.addEventListener("click",function(event){
+    const cardButton =  event.target.closest("button");
+        if(!cardButton){
+            return;
+        }
+         const position = Number(cardButton.dataset.index);
+ const playerCard = playerHand[position];
+ const computerCard = computerhand[Math.floor(Math.random() * computerhand.length)];
+     console.log("You:", playerCard, "Computer:", computerCard);
+});
+
+
 displayPlayers(players,playersList);
 displaycards(createHand("emperor"));
-displayComputerCards(computerhand.length);
+displayComputercards(computerhand.length);
+displayhand(playerHand);
