@@ -124,7 +124,7 @@ if(avatarRadio){
    gameSection.style.display = "block";
      
     });   
-   const playerHand = createHand("emperor");
+  
    const playerHandContainer = document.getElementById("player-hand");
 const playerhandcontainer = document.getElementById("player-hand")
 playerhandcontainer.addEventListener("click",function(event){

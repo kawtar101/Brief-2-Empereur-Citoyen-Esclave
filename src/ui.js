@@ -8,14 +8,14 @@ players.forEach(function(player) {
 
 const playerCard = document.createElement("div");
  playerCard.className = `
- bg-carte border border-white/10 rounded-x1 p-5 text-texte shadow-md flex flex-col items-center gap-3`;
+ bg-carte border border-white/10 rounded-xl p-5 text-texte shadow-md flex flex-col items-center gap-3`;
 
         playerCard.innerHTML = `
           
             <img src="${player.avatar}" alt="avatar"    class="w-28 h-28 rounded-full object-cover border-2 border-empereur">
     <h3 class="text-xl font-bold">${player.nickname}</h3>
             <p>Games played: 0</p>  
-    <div class="flex flex-wrap justify-center gap-2 mt-4">
+    <div class="flex flex-wrap justify-center gap-2 mt-4"></div>
 
     <button  class="edit-btn bg-white/10 text-texte px-4 py-2 rounded-md"
             data-action="edit" data-id="${player.id}">Edit</button>
@@ -40,6 +40,7 @@ cards.innerHTML = hand
 })
 .join("");// bcz we have pieces of text (seperate ) ,it glue them into one long string with nothing between thrm and that string is what goes in innerhtml
 }
+
 export function displayComputercards(count){
     const cards = document.getElementById("computer-hand");
     cards.innerHTML = Array(count)
@@ -51,4 +52,15 @@ export function displayComputercards(count){
           </div>`
           })
     .join("");
+}
+export function displayTable(playerCard,computerCard,reveal){
+    const playerPlayed = document.getElementById("player-played");
+    const computerPlayed = document.getElementById("computer-played");
+    playerplayed.innerHTML = `<img src="assets/cards/${playerCard}.webp" alt="${playerCard}" class="w-20 h-28 rounded-lg">`
+if(reveal){
+      computerPlayed.innerHTML = `<img src="assets/cards/${computerCard}.webp" alt="${computerCard}" class="w-20 h-28 rounded-lg">`;
+}
+else {
+    computerPlayed.innerHTML = `<img src="assets/cards/bakcard.jpg" alt="Hidden card"  class="w-20 h-28 rounded-lg animate-pulse">`;
+}
 }
