@@ -4,12 +4,11 @@
 // 1st we have to connect the form to js
 import {loadPlayers,savePlayers} from "./storage.js";
 import {createPlayer} from "./players.js"
-import { displayPlayers,displaycards,displayComputercards } from "./ui.js";
+import { displayPlayers,displaycards,displayComputercards,displayTable} from "./ui.js";
 import { createHand } from "./game.js";
 const formplayer = document.getElementById("player-form");
 const nicknameInput = document.getElementById("nickname");
-const computerhand = createHand("slave");
-const playerHand = createHand("emperor");
+
 const playersList = document.getElementById("players-list");
 const activePlayerDisplay = document.getElementById("active-player");
 const startGameButton = document.getElementById("start-game");
@@ -115,30 +114,87 @@ if(avatarRadio){
 }
  });
 
-    startGameButton.addEventListener("click", function() {
-  if (activePlayer === null){
-    gameMessage.textContent = "you have to select a player first";
-    return;
-  }
+//     startGameButton.addEventListener("click", function() {
+//   if (activePlayer === null){
+//     gameMessage.textContent = "you have to select a player first";
+//     return;
+//   }
+//   profilesScreen.style.display = "none";
+//    gameSection.style.display = "block";
+   
+//     });    
+//    const playerHandContainer = document.getElementById("player-hand");
+// const playerhandcontainer = document.getElementById("player-hand")
+// playerhandcontainer.addEventListener("click",function(event){
+//     const cardButton =  event.target.closest("button");
+//         if(!cardButton){
+//             return;
+//         }
+//          const position = Number(cardButton.dataset.index);
+//  const playerCard = playerHand[position];
+//  const computerCard = computerhand[Math.floor(Math.random() * computerhand.length)];
+//      console.log("You:", playerCard, "Computer:", computerCard);
+// });
+// displayPlayers(players,playersList);
+// displaycards(playerHand);
+// displayComputercards(computerhand.length);
+let playerSide = "emperor";
+let computerSide = "slave";
+let playerHand = [];  //they start as empty lists bcz the cards are onyl dealt when the game starts
+let computerHand=[];  // same thing 
+
+const plaerHandContainer = document.getElementById("player-hand"); // it looks for the the div that holds my hand  so we can listen for clicks 
+function newHANDS(){  // function that deals the cards
+    playerHand = createHand(playerSide); // this asks game.js for a new list of 5 cards 
+    computerHand= createHand(computerSide);
+    displaycards(playerHand);  // draws my cards face up as buttons i can click
+    displayComputercards(computerHand.length);// 
+}
+  startGameButton.addEventListener("click", function() {
+  if (activePlayer === null){ // this so it' important to select a player first 
+   gameMessage.textContent = "you have to select a player first"; 
+     return;
+   }
   profilesScreen.style.display = "none";
-   gameSection.style.display = "block";
+    gameSection.style.display = "block";
+    newHANDS();
      
-    });   
-  
-   const playerHandContainer = document.getElementById("player-hand");
-const playerhandcontainer = document.getElementById("player-hand")
-playerhandcontainer.addEventListener("click",function(event){
-    const cardButton =  event.target.closest("button");
-        if(!cardButton){
-            return;
-        }
-         const position = Number(cardButton.dataset.index);
- const playerCard = playerHand[position];
- const computerCard = computerhand[Math.floor(Math.random() * computerhand.length)];
-     console.log("You:", playerCard, "Computer:", computerCard);
-});
+   });
+   plaerHandContainer.addEventListener("click", function(event){
+const cardButton = event.target.closest("button");
+if (!cardButton){
+    return;
+}
+const position = Number(cardButton.dataset.index);
+const playerCard = playerHand[position];
+const computerpositon= computerHand[Math.floor(Math.random() * computerHand.length )];
+const computerCard = computerHand[computerpositon];
 
+displayTable(playerCard,computerCard,false);
 
-displayPlayers(players,playersList);
-displaycards(playerHand);
-displayComputercards(computerhand.length);
+setTimeout(function(){
+    displayTable(playerCard,computerCard,true);
+    const result = duel(playerCard,computerCard);
+    if (result === "victory"){
+        duelMessage.textContent = "you win this duel!";
+    }else if (result === "defeat"){
+        duelMessage.textContent = "you lose this duel";
+    }else {
+        duelMessage.textContent ="DRAW!!";
+        setTimeout(function(){
+            playerHand = [...playerHand];
+            playerHand.splice(position,1);
+
+            computerHand = [...computerHand];
+            computerHand.splice(computerpositon,1); 
+
+            displaycards(playerHand);
+            displayComputercards(computerHand.length);
+
+            document.getElementById("player-played").innerHTML= "";
+            document.getElementById("computer-played").innerHTML= "";
+        },1000);
+    }
+},1000);
+    });
+   displayPlayers(players,playersList);
