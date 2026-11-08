@@ -5,7 +5,7 @@
 import {loadPlayers,savePlayers} from "./storage.js";
 import {createPlayer} from "./players.js"
 import { displayPlayers,displaycards,displayComputercards,displayTable} from "./ui.js";
-import { createHand } from "./game.js";
+import { createHand ,duel} from "./game.js";
 const formplayer = document.getElementById("player-form");
 const nicknameInput = document.getElementById("nickname");
 
@@ -142,13 +142,27 @@ let playerSide = "emperor";
 let computerSide = "slave";
 let playerHand = [];  //they start as empty lists bcz the cards are onyl dealt when the game starts
 let computerHand=[];  // same thing 
-
+let round = 1;
+let playerscore = 0;
+let computerscore=0;
 const plaerHandContainer = document.getElementById("player-hand"); // it looks for the the div that holds my hand  so we can listen for clicks 
+
+
+
 function newHANDS(){  // function that deals the cards
     playerHand = createHand(playerSide); // this asks game.js for a new list of 5 cards 
     computerHand= createHand(computerSide);
     displaycards(playerHand);  // draws my cards face up as buttons i can click
     displayComputercards(computerHand.length);// 
+    document.getElementById("player-played").innerHTML="";
+    document.getElementById("computer-played").innerHTML="";
+}
+function endRound(){
+    setTimeout(function(){
+        round = round + 1;
+        console.log("now round",round);
+        newHANDS();
+    },1500);
 }
   startGameButton.addEventListener("click", function() {
   if (activePlayer === null){ // this so it' important to select a player first 
@@ -167,18 +181,29 @@ if (!cardButton){
 }
 const position = Number(cardButton.dataset.index);
 const playerCard = playerHand[position];
-const computerpositon= computerHand[Math.floor(Math.random() * computerHand.length )];
+const computerpositon= Math.floor(Math.random() * computerHand.length );
 const computerCard = computerHand[computerpositon];
 
 displayTable(playerCard,computerCard,false);
-
 setTimeout(function(){
     displayTable(playerCard,computerCard,true);
     const result = duel(playerCard,computerCard);
     if (result === "victory"){
-        duelMessage.textContent = "you win this duel!";
+       let points = 1;
+       if (playerCard =="slave"){
+        points = 5;
+       }
+       playerscore = playerscore + points;
+       duelMessage.textContent = "you wind this round +" + points + "(you "+ playerscore + " - " + computerscore + "computer) ";
+       endRound();
+
     }else if (result === "defeat"){
-        duelMessage.textContent = "you lose this duel";
+       let points = 1;
+       if(computerCard =="slave"){
+        points = 5;
+       }
+       computerscore = computerscore + points;
+duelMessage.textContent = "you lose this round! computer +" + points + " (you " + playerscore + " - " + computerscore + " computer)";       endRound();
     }else {
         duelMessage.textContent ="DRAW!!";
         setTimeout(function(){
