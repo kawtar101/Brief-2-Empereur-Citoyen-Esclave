@@ -15,7 +15,7 @@ const playerCard = document.createElement("div");
             <img src="${player.avatar}" alt="avatar"    class="w-28 h-28 rounded-full object-cover border-2 border-empereur">
     <h3 class="text-xl font-bold">${player.nickname}</h3>
             <p>Games played: 0</p>  
-    <div class="flex flex-wrap justify-center gap-2 mt-4"></div>
+    <div class="flex flex-wrap justify-center gap-2 mt-4">
 
     <button  class="edit-btn bg-white/10 text-texte px-4 py-2 rounded-md"
             data-action="edit" data-id="${player.id}">Edit</button>
@@ -23,7 +23,7 @@ const playerCard = document.createElement("div");
             data-action="delete" data-id="${player.id}">Delete</button>
 <button  class="select-btn bg-empereur text-fond px-4 py-2 rounded-md"
             data-action="select" data-id="${player.id}">select player</button>
-    `;
+  </div>  `;
         playersList.appendChild(playerCard);
     });
 }
@@ -56,7 +56,7 @@ export function displayComputercards(count){
 export function displayTable(playerCard,computerCard,reveal){
     const playerPlayed = document.getElementById("player-played");
     const computerPlayed = document.getElementById("computer-played");
-    playerplayed.innerHTML = `<img src="assets/cards/${playerCard}.webp" alt="${playerCard}" class="w-20 h-28 rounded-lg">`
+    playerPlayed.innerHTML = `<img src="assets/cards/${playerCard}.webp" alt="${playerCard}" class="w-20 h-28 rounded-lg">`
 if(reveal){
       computerPlayed.innerHTML = `<img src="assets/cards/${computerCard}.webp" alt="${computerCard}" class="w-20 h-28 rounded-lg">`;
 }
