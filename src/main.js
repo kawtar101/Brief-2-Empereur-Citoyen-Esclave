@@ -114,30 +114,6 @@ if(avatarRadio){
 }
  });
 
-//     startGameButton.addEventListener("click", function() {
-//   if (activePlayer === null){
-//     gameMessage.textContent = "you have to select a player first";
-//     return;
-//   }
-//   profilesScreen.style.display = "none";
-//    gameSection.style.display = "block";
-   
-//     });    
-//    const playerHandContainer = document.getElementById("player-hand");
-// const playerhandcontainer = document.getElementById("player-hand")
-// playerhandcontainer.addEventListener("click",function(event){
-//     const cardButton =  event.target.closest("button");
-//         if(!cardButton){
-//             return;
-//         }
-//          const position = Number(cardButton.dataset.index);
-//  const playerCard = playerHand[position];
-//  const computerCard = computerhand[Math.floor(Math.random() * computerhand.length)];
-//      console.log("You:", playerCard, "Computer:", computerCard);
-// });
-// displayPlayers(players,playersList);
-// displaycards(playerHand);
-// displayComputercards(computerhand.length);
 let playerSide = "emperor";
 let computerSide = "slave";
 let playerHand = [];  //they start as empty lists bcz the cards are onyl dealt when the game starts
